@@ -3951,9 +3951,17 @@ components:
         - passengers
       properties:
         trips:
+          description: used in case the consumer wants to retrieve offers for a specific trip
           type: array
           items:
-            $ref: "#/components/schemas/Trip"
+            type: object
+            properties:
+              tripKey:
+                type: string
+                description: >-
+                  client reference for the trip. If specified it will be echoed back in matching tripoffers.
+              trip:
+                $ref: "#/components/schemas/Trip"
         tripSearchCriteria:
           $ref: "#/components/schemas/TripRequest"
         returnSearchParameters:
